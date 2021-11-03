@@ -5,11 +5,78 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>
+        Bin to Text
+    </title>
+    <!--Bootstrap with its required JS and CSS files with crossorigin and integrity attributes-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
+    <div class="container">
+        <br>
 
+        <!-- create a center div to hold the header -->
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Binary to Text</h1>
+            </div>
+        </div>
+        <!-- Bootstrap form for input text -->
+        <form>
+            <div class="form-group">
+                <label for="text">Binary:</label>
+                <textarea class="form-control" id="text" name="text">
+
+                </textarea>
+                <label for="result">
+                    Text:
+                </label>
+
+                <textarea id="result" class="form-control" readonly>
+
+                </textarea>
+            </div>
+            <!--Button to copy text to clipboard-->
+            <button type="button" class="btn btn-primary" id="copy">Copy</button>
+
+        </form>
+
+
+    </div>
 </body>
+<script>
+    // create a function to convert binary to text
+    function binaryAgent(str) {
+
+        var newBin = str.split(" ");
+        var binCode = [];
+
+        for (i = 0; i < newBin.length; i++) {
+            binCode.push(String.fromCharCode(parseInt(newBin[i], 2)));
+        }
+        return binCode.join("");
+    }
+
+    // add event listener to input change
+    $("#text").on("input", function () {
+        var text = $(this).val();
+        var result = binaryAgent(text.trim());
+        $("#result").val(String(result.toString()));
+    });
+
+</script>
 
 </html>
