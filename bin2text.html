@@ -77,6 +77,13 @@
         $("#result").val(String(result.toString()));
     });
 
+    // add event listener to button click
+    $("#copy").on("click", function () {
+        var text = $("#result").val();
+        var result = binaryAgent(text.trim());
+        $("#result").val(String(result.toString()));
+    });
+
 </script>
 
 </html>
